@@ -43,7 +43,7 @@ export function Footer() {
               <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/14 bg-white/[0.04] text-[var(--diji-cream)] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_18px_40px_rgba(2,11,18,0.24)] sm:h-[3.25rem] sm:w-[3.25rem]">
                 <DijiMarkIcon className="h-7 w-7" />
               </div>
-              <p className="font-display text-right text-[0.74rem] uppercase tracking-[0.24em] text-[#f0dfb7]/86 sm:text-[0.88rem] sm:tracking-[0.2em] lg:text-[1rem]">
+              <p className="cursor-field-reactive font-display text-right text-[0.74rem] uppercase tracking-[0.24em] text-[#f0dfb7]/86 sm:text-[0.88rem] sm:tracking-[0.2em] lg:text-[1rem]">
                 Your world. Your companion.
               </p>
             </div>
@@ -51,7 +51,7 @@ export function Footer() {
             <div className="mt-8 grid gap-8 lg:grid-cols-[1.18fr_0.7fr_0.7fr_0.92fr] lg:gap-8">
               <section className="max-w-[23rem]">
                 <p className="footer-lead">Companion systems with human gravity.</p>
-                <p className="mt-4 text-[1rem] leading-7 text-white/70">
+                <p className="cursor-field-reactive mt-4 text-[1rem] leading-7 text-white/70">
                   Premium interfaces for digital companionship, shaped with restraint,
                   signal, and cinematic calm.
                 </p>
@@ -127,7 +127,7 @@ export function Footer() {
           </div>
 
           <div className="pointer-events-none absolute inset-x-0 bottom-[-10%] overflow-hidden">
-            <div className="footer-wordmark">DIJI</div>
+            <div className="footer-wordmark cursor-field-reactive">DIJI</div>
           </div>
         </motion.section>
       </div>

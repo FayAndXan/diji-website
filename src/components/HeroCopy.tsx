@@ -33,7 +33,7 @@ export function HeroCopy() {
       </motion.p>
 
       <motion.h1
-        className="mt-4 w-fit font-brand text-[clamp(1rem,1.45vw,1.42rem)] leading-[0.78] tracking-[0.03em] text-[var(--diji-cream)] sm:mt-5"
+        className="cursor-field-reactive mt-4 w-fit font-brand text-[clamp(1rem,1.45vw,1.42rem)] leading-[0.78] tracking-[0.03em] text-[var(--diji-cream)] sm:mt-5"
         variants={{
           hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 18 },
           show: { opacity: 1, y: 0, transition: { duration: 0.78, ease: easing } },
@@ -49,10 +49,10 @@ export function HeroCopy() {
           show: { opacity: 1, y: 0, transition: { duration: 0.72, ease: easing } },
         }}
       >
-        <p className="font-display text-[0.98rem] uppercase tracking-[0.22em] text-[#efe6cf]/86 sm:text-[1.02rem]">
+        <p className="cursor-field-reactive font-display text-[0.98rem] uppercase tracking-[0.22em] text-[#efe6cf]/86 sm:text-[1.02rem]">
           Digital companion. Human connection.
         </p>
-        <p className="max-w-[21rem] text-[0.98rem] leading-7 text-white/78 sm:text-[1.02rem] sm:leading-7">
+        <p className="cursor-field-reactive max-w-[21rem] text-[0.98rem] leading-7 text-white/78 sm:text-[1.02rem] sm:leading-7">
           AI companions that understand you. Built to evolve. Designed to stay
           close to your rhythm.
         </p>
@@ -70,7 +70,7 @@ export function HeroCopy() {
           <ArrowRightIcon className="h-4 w-4" />
         </a>
 
-        <p className="font-display text-[0.82rem] uppercase tracking-[0.24em] text-white/52 sm:text-[0.86rem]">
+        <p className="cursor-field-reactive font-display text-[0.82rem] uppercase tracking-[0.24em] text-white/52 sm:text-[0.86rem]">
           Calm daylight sci-fi. Minimal game-inspired motion.
         </p>
       </motion.div>

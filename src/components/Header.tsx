@@ -26,7 +26,7 @@ export function Header() {
       <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4">
         <a
           href="#home"
-          className="ui-text-reactive font-brand text-[0.44rem] leading-none tracking-[0.045em] text-[var(--diji-cream)] transition-opacity duration-300 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.52)] sm:text-[0.5rem] lg:text-[0.56rem]"
+          className="ui-text-reactive font-brand text-[0.31rem] leading-none tracking-[0.045em] text-[var(--diji-cream)] transition-opacity duration-300 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.52)] sm:text-[0.35rem] lg:text-[0.39rem]"
           data-cursor-mode="text"
           aria-label="DIJI home"
         >
