@@ -173,7 +173,7 @@ export function CompanionCarousel() {
                 <motion.button
                   key={companion.id}
                   type="button"
-                  className={`companion-card absolute left-1/2 top-4 -translate-x-1/2 sm:top-5 lg:top-6 ${cardWidthClass}`}
+                  className={`companion-card absolute left-1/2 top-[1.7rem] -translate-x-1/2 sm:top-[1.95rem] lg:top-[2.15rem] ${cardWidthClass}`}
                   initial={false}
                   data-selected={isSelected || undefined}
                   style={{ zIndex: 20 - depth, transformPerspective: 1600 }}
@@ -248,7 +248,7 @@ export function CompanionCarousel() {
         </div>
       </div>
 
-      <div className="mt-2.5 flex items-center justify-center gap-2 sm:mt-3 lg:mt-3.5">
+      <div className="mt-[0.2rem] flex items-center justify-center gap-2 sm:mt-[0.4rem] lg:mt-[0.55rem]">
         {companions.map((companion, index) => (
           <button
             key={companion.id}
