@@ -106,7 +106,7 @@ export function CompanionCarousel() {
   return (
     <motion.section
       id="companions"
-      className="relative z-10 pb-1"
+      className="relative z-10 pb-2 pt-4 sm:pt-5 lg:pt-6"
       initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.85, delay: shouldReduceMotion ? 0 : 0.24 }}
@@ -150,7 +150,7 @@ export function CompanionCarousel() {
         </div>
       </div>
 
-      <div className="relative h-[13rem] overflow-hidden sm:h-[13.8rem] lg:h-[14.15rem]">
+      <div className="relative h-[14rem] overflow-hidden sm:h-[14.8rem] lg:h-[15.5rem]">
         <div className="absolute inset-x-0 top-0 flex justify-center">
           <div className="relative w-[min(100%,1180px)] [perspective:1600px] [transform-style:preserve-3d]">
             {companions.map((companion, index) => {
@@ -173,7 +173,7 @@ export function CompanionCarousel() {
                 <motion.button
                   key={companion.id}
                   type="button"
-                  className={`companion-card absolute left-1/2 top-1.5 -translate-x-1/2 sm:top-2.5 lg:top-3 ${cardWidthClass}`}
+                  className={`companion-card absolute left-1/2 top-4 -translate-x-1/2 sm:top-5 lg:top-6 ${cardWidthClass}`}
                   initial={false}
                   data-selected={isSelected || undefined}
                   style={{ zIndex: 20 - depth, transformPerspective: 1600 }}
