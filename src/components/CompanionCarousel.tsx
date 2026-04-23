@@ -165,7 +165,7 @@ export function CompanionCarousel() {
               const jumpedAcross = Math.abs(previousOffset - offset) > 2
               const opacity = isSelected ? 1 : depth === 1 ? 0.66 : 0.28
               const scale = isSelected ? 1 : depth === 1 ? 0.945 : 0.86
-              const y = isSelected ? 0 : depth === 1 ? 6 : 14
+              const y = isSelected ? 0 : depth === 1 ? 8 : 18
               const rotateY =
                 offset === -2 ? 12 : offset === -1 ? 7 : offset === 1 ? -7 : offset === 2 ? -12 : 0
 

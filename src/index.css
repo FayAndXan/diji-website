@@ -268,6 +268,12 @@ a {
       0 0 12px rgba(244, 231, 199, 0.32),
       0 0 22px rgba(162, 220, 255, 0.18);
     opacity: 0;
+    left: 0;
+    top: 0;
+    offset-path: inset(1px round 22px);
+    offset-distance: 0%;
+    offset-rotate: auto;
+    offset-anchor: center;
   }
 
   .companion-card-orbit::after {
@@ -376,9 +382,7 @@ a {
 
 @keyframes companion-card-runner {
   0% {
-    top: 0%;
-    left: 14%;
-    transform: translate(-50%, -50%) rotate(0deg);
+    offset-distance: 0%;
     opacity: 0;
   }
 
@@ -386,60 +390,90 @@ a {
     opacity: 1;
   }
 
-  24% {
-    top: 0%;
-    left: 86%;
-    transform: translate(-50%, -50%) rotate(0deg);
-    opacity: 1;
-  }
-
-  25% {
-    top: 14%;
-    left: 100%;
-    transform: translate(-50%, -50%) rotate(90deg);
-    opacity: 1;
-  }
-
-  49% {
-    top: 86%;
-    left: 100%;
-    transform: translate(-50%, -50%) rotate(90deg);
-    opacity: 1;
-  }
-
-  50% {
-    top: 100%;
-    left: 86%;
-    transform: translate(-50%, -50%) rotate(180deg);
-    opacity: 1;
-  }
-
-  74% {
-    top: 100%;
-    left: 14%;
-    transform: translate(-50%, -50%) rotate(180deg);
-    opacity: 1;
-  }
-
-  75% {
-    top: 86%;
-    left: 0%;
-    transform: translate(-50%, -50%) rotate(270deg);
-    opacity: 1;
-  }
-
   94% {
-    top: 14%;
-    left: 0%;
-    transform: translate(-50%, -50%) rotate(270deg);
     opacity: 1;
   }
 
   100% {
-    top: 0%;
-    left: 14%;
-    transform: translate(-50%, -50%) rotate(360deg);
+    offset-distance: 100%;
     opacity: 0;
+  }
+}
+
+@supports not (offset-path: inset(1px round 22px)) {
+  .companion-card-orbit::before {
+    offset-path: none;
+    offset-distance: 0%;
+    offset-rotate: 0deg;
+  }
+
+  @keyframes companion-card-runner {
+    0% {
+      top: 0%;
+      left: 14%;
+      transform: translate(-50%, -50%) rotate(0deg);
+      opacity: 0;
+    }
+
+    6% {
+      opacity: 1;
+    }
+
+    24% {
+      top: 0%;
+      left: 86%;
+      transform: translate(-50%, -50%) rotate(0deg);
+      opacity: 1;
+    }
+
+    25% {
+      top: 14%;
+      left: 100%;
+      transform: translate(-50%, -50%) rotate(90deg);
+      opacity: 1;
+    }
+
+    49% {
+      top: 86%;
+      left: 100%;
+      transform: translate(-50%, -50%) rotate(90deg);
+      opacity: 1;
+    }
+
+    50% {
+      top: 100%;
+      left: 86%;
+      transform: translate(-50%, -50%) rotate(180deg);
+      opacity: 1;
+    }
+
+    74% {
+      top: 100%;
+      left: 14%;
+      transform: translate(-50%, -50%) rotate(180deg);
+      opacity: 1;
+    }
+
+    75% {
+      top: 86%;
+      left: 0%;
+      transform: translate(-50%, -50%) rotate(270deg);
+      opacity: 1;
+    }
+
+    94% {
+      top: 14%;
+      left: 0%;
+      transform: translate(-50%, -50%) rotate(270deg);
+      opacity: 1;
+    }
+
+    100% {
+      top: 0%;
+      left: 14%;
+      transform: translate(-50%, -50%) rotate(360deg);
+      opacity: 0;
+    }
   }
 }
 
