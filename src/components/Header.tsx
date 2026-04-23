@@ -23,17 +23,17 @@ export function Header() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4">
+      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 md:grid-cols-[1fr_auto_1fr]">
         <a
           href="#home"
-          className="ui-text-reactive font-brand text-[0.31rem] leading-none tracking-[0.045em] text-[var(--diji-cream)] transition-opacity duration-300 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.52)] sm:text-[0.35rem] lg:text-[0.39rem]"
+          className="ui-text-reactive font-brand text-[0.31rem] leading-none tracking-[0.045em] text-[var(--diji-cream)] transition-opacity duration-300 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.52)] sm:text-[0.35rem] lg:text-[0.39rem] md:justify-self-start"
           data-cursor-mode="text"
           aria-label="DIJI home"
         >
           DIJI
         </a>
 
-        <nav className="hidden items-center justify-center gap-7 md:flex lg:gap-8">
+        <nav className="hidden items-center justify-center gap-7 md:justify-self-center lg:gap-8 md:flex">
           {navItems.map((item) => (
             <a
               key={item.label}
@@ -47,7 +47,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center justify-end gap-2 sm:gap-3">
+        <div className="flex items-center justify-end gap-2 sm:gap-3 md:justify-self-end">
           <button
             type="button"
             className="hidden h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/[0.045] text-white/72 transition-colors duration-300 hover:border-[var(--diji-border-strong)] hover:text-[var(--diji-cream)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.52)] md:inline-flex"

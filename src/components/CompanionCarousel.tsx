@@ -1,9 +1,11 @@
-import { startTransition, useEffect, useEffectEvent, useState } from 'react'
+import { startTransition, useEffect, useEffectEvent, useRef, useState } from 'react'
 
 import { motion, useReducedMotion } from 'framer-motion'
 
 import { companions } from '../data/companions'
 import { ChevronIcon, CompanionGlyph, LockIcon } from './icons'
+
+const slideEase = [0.22, 1, 0.36, 1] as const
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max)
@@ -47,6 +49,7 @@ export function CompanionCarousel() {
     typeof window === 'undefined' ? 1440 : window.innerWidth,
   )
   const shouldReduceMotion = useReducedMotion()
+  const previousSelectedIndexRef = useRef(selectedIndex)
 
   useEffect(() => {
     const handleResize = () => setViewportWidth(window.innerWidth)
@@ -56,6 +59,10 @@ export function CompanionCarousel() {
 
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  useEffect(() => {
+    previousSelectedIndexRef.current = selectedIndex
+  }, [selectedIndex])
 
   const cycleSelection = useEffectEvent((direction: 1 | -1) => {
     startTransition(() => {
@@ -88,12 +95,13 @@ export function CompanionCarousel() {
       if (!isPaused) {
         cycleSelection(1)
       }
-    }, 4600)
+    }, 5200)
 
     return () => window.clearInterval(timer)
   }, [isPaused, shouldReduceMotion])
 
   const cardWidthClass = getCardSizeClass(viewportWidth)
+  const previousSelectedIndex = previousSelectedIndexRef.current
 
   return (
     <motion.section
@@ -144,32 +152,65 @@ export function CompanionCarousel() {
 
       <div className="relative h-[13rem] overflow-hidden sm:h-[13.8rem] lg:h-[14.15rem]">
         <div className="absolute inset-x-0 top-0 flex justify-center">
-          <div className="relative w-[min(100%,1180px)]">
+          <div className="relative w-[min(100%,1180px)] [perspective:1600px] [transform-style:preserve-3d]">
             {companions.map((companion, index) => {
               const offset = getWrappedOffset(index, selectedIndex, companions.length)
+              const previousOffset = getWrappedOffset(
+                index,
+                previousSelectedIndex,
+                companions.length,
+              )
               const isSelected = offset === 0
-              const opacity = isSelected ? 1 : Math.abs(offset) === 1 ? 0.7 : 0.38
-              const scale = isSelected ? 1 : Math.abs(offset) === 1 ? 0.94 : 0.88
+              const depth = Math.abs(offset)
+              const jumpedAcross = Math.abs(previousOffset - offset) > 2
+              const opacity = isSelected ? 1 : depth === 1 ? 0.66 : 0.28
+              const scale = isSelected ? 1 : depth === 1 ? 0.945 : 0.86
+              const y = isSelected ? 0 : depth === 1 ? 6 : 14
+              const rotateY =
+                offset === -2 ? 12 : offset === -1 ? 7 : offset === 1 ? -7 : offset === 2 ? -12 : 0
 
               return (
                 <motion.button
                   key={companion.id}
                   type="button"
                   className={`companion-card absolute left-1/2 top-1.5 -translate-x-1/2 sm:top-2.5 lg:top-3 ${cardWidthClass}`}
+                  initial={false}
                   data-selected={isSelected || undefined}
-                  style={{ zIndex: 20 - Math.abs(offset) }}
+                  style={{ zIndex: 20 - depth, transformPerspective: 1600 }}
                   animate={{
                     x: getCardPosition(offset, viewportWidth),
-                    y: 0,
+                    y,
                     scale,
                     opacity,
+                    rotateY,
                   }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 220,
-                    damping: 28,
-                    mass: 0.9,
-                  }}
+                  transition={
+                    jumpedAcross
+                      ? {
+                          x: { duration: 0.01, ease: 'linear' },
+                          y: { duration: 0.52, ease: slideEase },
+                          scale: { duration: 0.52, ease: slideEase },
+                          opacity: { duration: 0.22, ease: 'easeOut' },
+                          rotateY: { duration: 0.01, ease: 'linear' },
+                        }
+                      : {
+                          x: { type: 'spring', stiffness: 170, damping: 23, mass: 0.84 },
+                          y: { type: 'spring', stiffness: 176, damping: 24, mass: 0.84 },
+                          scale: {
+                            type: 'spring',
+                            stiffness: 160,
+                            damping: 22,
+                            mass: 0.82,
+                          },
+                          opacity: { duration: 0.24, ease: 'easeOut' },
+                          rotateY: {
+                            type: 'spring',
+                            stiffness: 142,
+                            damping: 24,
+                            mass: 0.86,
+                          },
+                        }
+                  }
                   whileHover={
                     shouldReduceMotion
                       ? undefined

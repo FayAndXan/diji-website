@@ -9,7 +9,7 @@ export function HeroCopy() {
 
   return (
     <motion.div
-      className="relative z-10 max-w-[24rem] pt-[clamp(1.8rem,7vh,4.75rem)] sm:max-w-[25rem]"
+      className="relative z-10 max-w-[24rem] pt-[clamp(2.8rem,9vh,5.8rem)] sm:max-w-[25rem]"
       initial="hidden"
       animate="show"
       variants={{
@@ -22,26 +22,28 @@ export function HeroCopy() {
         },
       }}
     >
-      <motion.h1
-        className="w-fit font-brand text-[clamp(1rem,1.45vw,1.42rem)] leading-[0.78] tracking-[0.03em] text-[var(--diji-cream)]"
+      <motion.div
+        className="-ml-[0.08rem] flex w-[min(100%,22.4rem)] flex-col gap-6"
         variants={{
           hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 18 },
           show: { opacity: 1, y: 0, transition: { duration: 0.78, ease: easing } },
         }}
       >
-        DIJI
-      </motion.h1>
+        <p className="w-full pl-[0.26rem] font-display text-[0.68rem] uppercase tracking-[0.74em] text-[#efe6cf]/82 sm:text-[0.74rem]">
+          Digital Companion
+        </p>
+        <h1 className="w-full font-brand text-[clamp(0.98rem,1.42vw,1.36rem)] leading-[0.84] tracking-[0.022em] text-[var(--diji-cream)]">
+          DIJI
+        </h1>
+      </motion.div>
 
       <motion.div
-        className="mt-5 space-y-3 sm:mt-6"
+        className="mt-6 space-y-3 sm:mt-6"
         variants={{
           hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 16 },
           show: { opacity: 1, y: 0, transition: { duration: 0.72, ease: easing } },
         }}
       >
-        <p className="font-display text-[0.98rem] uppercase tracking-[0.22em] text-[#efe6cf]/86 sm:text-[1.02rem]">
-          Digital companion. Human connection.
-        </p>
         <p className="max-w-[21rem] text-[0.98rem] leading-7 text-white/78 sm:text-[1.02rem] sm:leading-7">
           AI companions that understand you. Built to evolve. Designed to stay
           close to your rhythm.

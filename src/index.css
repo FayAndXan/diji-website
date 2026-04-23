@@ -239,39 +239,53 @@ a {
 
   .companion-card-orbit {
     position: absolute;
-    inset: -1px;
+    inset: 0;
     z-index: 0;
-    padding: 1px;
     border-radius: inherit;
     pointer-events: none;
     opacity: 0;
-    background: conic-gradient(
-      from 0deg,
-      transparent 0deg,
-      transparent 70deg,
-      rgba(244, 231, 199, 0.88) 104deg,
-      transparent 148deg,
-      transparent 222deg,
-      rgba(162, 220, 255, 0.82) 266deg,
-      transparent 312deg,
-      transparent 360deg
-    );
-    -webkit-mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    mask-composite: exclude;
-    filter:
-      drop-shadow(0 0 10px rgba(244, 231, 199, 0.28))
-      drop-shadow(0 0 18px rgba(162, 220, 255, 0.16));
   }
 
   .companion-card[data-selected='true'] .companion-card-orbit {
     opacity: 1;
-    animation: companion-card-orbit-spin 4.8s linear infinite;
+  }
+
+  .companion-card-orbit::before {
+    content: '';
+    position: absolute;
+    width: 4.2rem;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(244, 231, 199, 0.18) 14%,
+      rgba(244, 231, 199, 0.92) 48%,
+      rgba(162, 220, 255, 0.88) 72%,
+      transparent 100%
+    );
+    box-shadow:
+      0 0 12px rgba(244, 231, 199, 0.32),
+      0 0 22px rgba(162, 220, 255, 0.18);
+    opacity: 0;
+  }
+
+  .companion-card-orbit::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(244, 231, 199, 0.08);
+    opacity: 0;
+  }
+
+  .companion-card[data-selected='true'] .companion-card-orbit::before {
+    opacity: 1;
+    animation: companion-card-runner 5.4s linear infinite;
+  }
+
+  .companion-card[data-selected='true'] .companion-card-orbit::after {
+    opacity: 1;
   }
 
   .footer-stage {
@@ -360,9 +374,72 @@ a {
   }
 }
 
-@keyframes companion-card-orbit-spin {
-  to {
-    transform: rotate(1turn);
+@keyframes companion-card-runner {
+  0% {
+    top: 0%;
+    left: 14%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 0;
+  }
+
+  6% {
+    opacity: 1;
+  }
+
+  24% {
+    top: 0%;
+    left: 86%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 1;
+  }
+
+  25% {
+    top: 14%;
+    left: 100%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    opacity: 1;
+  }
+
+  49% {
+    top: 86%;
+    left: 100%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    opacity: 1;
+  }
+
+  50% {
+    top: 100%;
+    left: 86%;
+    transform: translate(-50%, -50%) rotate(180deg);
+    opacity: 1;
+  }
+
+  74% {
+    top: 100%;
+    left: 14%;
+    transform: translate(-50%, -50%) rotate(180deg);
+    opacity: 1;
+  }
+
+  75% {
+    top: 86%;
+    left: 0%;
+    transform: translate(-50%, -50%) rotate(270deg);
+    opacity: 1;
+  }
+
+  94% {
+    top: 14%;
+    left: 0%;
+    transform: translate(-50%, -50%) rotate(270deg);
+    opacity: 1;
+  }
+
+  100% {
+    top: 0%;
+    left: 14%;
+    transform: translate(-50%, -50%) rotate(360deg);
+    opacity: 0;
   }
 }
 
