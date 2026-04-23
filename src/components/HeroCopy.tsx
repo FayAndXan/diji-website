@@ -22,18 +22,8 @@ export function HeroCopy() {
         },
       }}
     >
-      <motion.p
-        className="section-kicker"
-        variants={{
-          hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 12 },
-          show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easing } },
-        }}
-      >
-        YOUR WORLD. YOUR COMPANION.
-      </motion.p>
-
       <motion.h1
-        className="mt-4 w-fit font-brand text-[clamp(1rem,1.45vw,1.42rem)] leading-[0.78] tracking-[0.03em] text-[var(--diji-cream)] sm:mt-5"
+        className="w-fit font-brand text-[clamp(1rem,1.45vw,1.42rem)] leading-[0.78] tracking-[0.03em] text-[var(--diji-cream)]"
         variants={{
           hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 18 },
           show: { opacity: 1, y: 0, transition: { duration: 0.78, ease: easing } },
@@ -43,7 +33,7 @@ export function HeroCopy() {
       </motion.h1>
 
       <motion.div
-        className="mt-6 space-y-3 sm:mt-7"
+        className="mt-5 space-y-3 sm:mt-6"
         variants={{
           hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 16 },
           show: { opacity: 1, y: 0, transition: { duration: 0.72, ease: easing } },

@@ -27,8 +27,6 @@ export function HeroBackdrop() {
       <div className="absolute -left-12 bottom-[8%] h-[16rem] w-[16rem] rounded-full bg-[#88c6e7]/10 blur-3xl md:h-[22rem] md:w-[22rem]" />
 
       <div className="absolute -right-10 top-[18%] h-[12rem] w-[12rem] rounded-full bg-[#f0deba]/10 blur-3xl md:h-[18rem] md:w-[18rem]" />
-
-      <div className="absolute left-[45%] top-[21%] hidden h-px w-[5.5rem] rotate-[-6deg] bg-[linear-gradient(90deg,transparent,rgba(255,247,224,0.94),transparent)] shadow-[0_0_18px_rgba(255,247,224,0.48)] md:block" />
     </div>
   )
 }

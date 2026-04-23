@@ -237,24 +237,59 @@ a {
     z-index: 1;
   }
 
+  .companion-card-orbit {
+    position: absolute;
+    inset: -1px;
+    z-index: 0;
+    padding: 1px;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 70deg,
+      rgba(244, 231, 199, 0.88) 104deg,
+      transparent 148deg,
+      transparent 222deg,
+      rgba(162, 220, 255, 0.82) 266deg,
+      transparent 312deg,
+      transparent 360deg
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    filter:
+      drop-shadow(0 0 10px rgba(244, 231, 199, 0.28))
+      drop-shadow(0 0 18px rgba(162, 220, 255, 0.16));
+  }
+
+  .companion-card[data-selected='true'] .companion-card-orbit {
+    opacity: 1;
+    animation: companion-card-orbit-spin 4.8s linear infinite;
+  }
+
   .footer-stage {
-    @apply relative isolate overflow-hidden rounded-[32px] border border-white/12 bg-[#061019];
+    @apply relative isolate overflow-hidden rounded-[30px] border border-white/12 bg-[#061019];
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      0 40px 120px rgba(2, 8, 12, 0.34);
+      0 28px 70px rgba(2, 8, 12, 0.24);
   }
 
   .footer-atmosphere {
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 50% 2%, rgba(163, 221, 255, 0.2), transparent 22%),
-      radial-gradient(circle at 50% 24%, rgba(243, 232, 207, 0.12), transparent 18%),
+      radial-gradient(circle at 50% 0%, rgba(163, 221, 255, 0.14), transparent 18%),
       linear-gradient(
         180deg,
-        rgba(128, 171, 198, 0.22) 0%,
-        rgba(12, 22, 31, 0.36) 26%,
-        rgba(5, 12, 18, 0.86) 72%,
+        rgba(80, 112, 138, 0.18) 0%,
+        rgba(10, 19, 27, 0.56) 32%,
         #030b10 100%
       );
   }
@@ -263,75 +298,21 @@ a {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(circle at 12% 16%, rgba(255, 241, 216, 0.14), transparent 18%),
-      radial-gradient(circle at 88% 18%, rgba(255, 241, 216, 0.12), transparent 18%),
-      linear-gradient(90deg, rgba(2, 7, 11, 0.18) 0%, transparent 18%, transparent 82%, rgba(2, 7, 11, 0.18) 100%);
-  }
-
-  .footer-atmosphere::after {
-    content: '';
-    position: absolute;
-    left: 5%;
-    right: 5%;
-    bottom: 31%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
-    box-shadow: 0 0 22px rgba(163, 221, 255, 0.08);
-  }
-
-  .footer-gridline {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-    background-size: 72px 72px;
-    opacity: 0.12;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 18%, rgba(0, 0, 0, 1) 100%);
-    mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 18%, rgba(0, 0, 0, 1) 100%);
-  }
-
-  .footer-lead {
-    @apply font-display text-[2rem] uppercase leading-[0.94] tracking-[0.08em] text-[var(--diji-cream)] sm:text-[2.35rem];
+    background: linear-gradient(
+      90deg,
+      rgba(2, 7, 11, 0.12) 0%,
+      transparent 18%,
+      transparent 82%,
+      rgba(2, 7, 11, 0.12) 100%
+    );
   }
 
   .footer-section-label {
-    @apply border-b border-white/14 pb-3 font-display text-[0.88rem] uppercase tracking-[0.26em] text-white/58;
+    @apply font-display text-[0.78rem] uppercase tracking-[0.3em] text-white/48;
   }
 
   .footer-link {
-    @apply w-fit text-[0.96rem] leading-7 text-white/74 transition-colors duration-300 hover:text-[var(--diji-cream)] focus-visible:text-[var(--diji-cream)] focus-visible:outline-none;
-  }
-
-  .footer-meta {
-    @apply mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-white/12 pt-4 font-display text-[0.76rem] uppercase tracking-[0.2em] text-white/46;
-  }
-
-  .footer-wordmark {
-    font-family: var(--font-display);
-    font-size: clamp(5.5rem, 18vw, 12.5rem);
-    font-weight: 600;
-    line-height: 0.72;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: rgba(255, 248, 233, 0.16);
-    text-align: center;
-    -webkit-mask-image: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 1) 10%,
-      rgba(0, 0, 0, 0.78) 40%,
-      transparent 92%
-    );
-    mask-image: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 1) 10%,
-      rgba(0, 0, 0, 0.78) 40%,
-      transparent 92%
-    );
-    text-shadow:
-      0 0 30px rgba(243, 232, 207, 0.08),
-      0 0 70px rgba(163, 221, 255, 0.06);
+    @apply w-fit text-[0.96rem] leading-6 text-white/74 transition-colors duration-300 hover:text-[var(--diji-cream)] focus-visible:text-[var(--diji-cream)] focus-visible:outline-none;
   }
 
   .cursor-warp,
@@ -376,6 +357,12 @@ a {
   body.cursor-visible .cursor-warp,
   body.cursor-visible .cursor-core {
     opacity: 1;
+  }
+}
+
+@keyframes companion-card-orbit-spin {
+  to {
+    transform: rotate(1turn);
   }
 }
 

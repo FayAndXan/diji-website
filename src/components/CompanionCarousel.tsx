@@ -98,7 +98,7 @@ export function CompanionCarousel() {
   return (
     <motion.section
       id="companions"
-      className="relative z-10 pb-2"
+      className="relative z-10 pb-1"
       initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.85, delay: shouldReduceMotion ? 0 : 0.24 }}
@@ -142,7 +142,7 @@ export function CompanionCarousel() {
         </div>
       </div>
 
-      <div className="relative h-[12.6rem] overflow-hidden sm:h-[13.2rem] lg:h-[13.6rem]">
+      <div className="relative h-[13rem] overflow-hidden sm:h-[13.8rem] lg:h-[14.15rem]">
         <div className="absolute inset-x-0 top-0 flex justify-center">
           <div className="relative w-[min(100%,1180px)]">
             {companions.map((companion, index) => {
@@ -155,7 +155,7 @@ export function CompanionCarousel() {
                 <motion.button
                   key={companion.id}
                   type="button"
-                  className={`companion-card absolute left-1/2 top-0 -translate-x-1/2 ${cardWidthClass}`}
+                  className={`companion-card absolute left-1/2 top-1.5 -translate-x-1/2 sm:top-2.5 lg:top-3 ${cardWidthClass}`}
                   data-selected={isSelected || undefined}
                   style={{ zIndex: 20 - Math.abs(offset) }}
                   animate={{
@@ -174,7 +174,7 @@ export function CompanionCarousel() {
                     shouldReduceMotion
                       ? undefined
                       : {
-                          scale: isSelected ? 1.02 : scale + 0.025,
+                          scale: isSelected ? 1.015 : scale + 0.02,
                         }
                   }
                   aria-pressed={isSelected}
@@ -198,6 +198,8 @@ export function CompanionCarousel() {
                       {companion.mantra}
                     </p>
                   </div>
+
+                  <span className="companion-card-orbit" aria-hidden="true" />
                 </motion.button>
               )
             })}
@@ -205,7 +207,7 @@ export function CompanionCarousel() {
         </div>
       </div>
 
-      <div className="mt-5 flex items-center justify-center gap-2 sm:mt-6">
+      <div className="mt-2.5 flex items-center justify-center gap-2 sm:mt-3 lg:mt-3.5">
         {companions.map((companion, index) => (
           <button
             key={companion.id}
