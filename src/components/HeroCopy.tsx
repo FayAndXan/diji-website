@@ -23,16 +23,16 @@ export function HeroCopy() {
       }}
     >
       <motion.div
-        className="-ml-[0.04rem] flex w-[min(100%,22.8rem)] flex-col gap-6"
+        className="-ml-[0.04rem] flex w-[min(100%,22.8rem)] flex-col gap-7"
         variants={{
           hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 18 },
           show: { opacity: 1, y: 0, transition: { duration: 0.78, ease: easing } },
         }}
       >
-        <p className="w-full pl-[0.1rem] font-display text-[0.76rem] uppercase tracking-[0.34em] text-[#efe6cf]/82 sm:text-[0.8rem]">
+        <p className="relative -top-[0.35rem] w-full pl-[0.1rem] font-display text-[0.76rem] uppercase tracking-[0.34em] text-[#efe6cf]/82 sm:text-[0.8rem]">
           Your World. Your Companion.
         </p>
-        <h1 className="w-full pt-1 font-brand text-[clamp(1.22rem,1.9vw,1.76rem)] leading-[0.76] tracking-[0.028em] text-[var(--diji-cream)]">
+        <h1 className="-ml-[0.2rem] w-full pt-1 font-brand text-[clamp(1.22rem,1.9vw,1.76rem)] leading-[0.76] tracking-[0.028em] text-[var(--diji-cream)]">
           DIJI
         </h1>
       </motion.div>
