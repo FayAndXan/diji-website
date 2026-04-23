@@ -16,12 +16,15 @@ function App() {
       >
         <HeroBackdrop />
 
-        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1540px] flex-col px-4 pb-8 pt-4 sm:px-6 md:px-8 lg:px-10 xl:px-14">
+        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1540px] flex-col px-4 pb-8 pt-5 sm:px-6 sm:pt-6 md:px-8 md:pt-7 lg:px-10 lg:pt-8 xl:px-14">
           <Header />
 
-          <div className="flex flex-1 flex-col justify-between gap-12 pt-8 sm:pt-10 md:pt-12 lg:pt-16">
+          <div className="flex flex-1 flex-col pt-6 sm:pt-7 md:pt-8 lg:pt-10">
             <HeroCopy />
-            <CompanionCarousel />
+
+            <div className="mt-[clamp(3.9rem,8.8vh,6.8rem)]">
+              <CompanionCarousel />
+            </div>
           </div>
         </div>
       </section>

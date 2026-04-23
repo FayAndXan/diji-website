@@ -106,7 +106,7 @@ export function CompanionCarousel() {
   return (
     <motion.section
       id="companions"
-      className="relative z-10 pb-2 pt-4 sm:pt-5 lg:pt-6"
+      className="relative z-10 pb-2"
       initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.85, delay: shouldReduceMotion ? 0 : 0.24 }}
@@ -152,7 +152,7 @@ export function CompanionCarousel() {
 
       <div className="relative h-[14rem] overflow-hidden sm:h-[14.8rem] lg:h-[15.5rem]">
         <div className="absolute inset-x-0 top-0 flex justify-center">
-          <div className="relative w-[min(100%,1180px)] [perspective:1600px] [transform-style:preserve-3d]">
+          <div className="relative w-[min(100%,1180px)]">
             {companions.map((companion, index) => {
               const offset = getWrappedOffset(index, selectedIndex, companions.length)
               const previousOffset = getWrappedOffset(
@@ -164,10 +164,7 @@ export function CompanionCarousel() {
               const depth = Math.abs(offset)
               const jumpedAcross = Math.abs(previousOffset - offset) > 2
               const opacity = isSelected ? 1 : depth === 1 ? 0.66 : 0.28
-              const scale = isSelected ? 1 : depth === 1 ? 0.945 : 0.86
-              const y = isSelected ? 0 : depth === 1 ? 8 : 18
-              const rotateY =
-                offset === -2 ? 12 : offset === -1 ? 7 : offset === 1 ? -7 : offset === 2 ? -12 : 0
+              const scale = isSelected ? 1 : depth === 1 ? 0.935 : 0.85
 
               return (
                 <motion.button
@@ -176,26 +173,24 @@ export function CompanionCarousel() {
                   className={`companion-card absolute left-1/2 top-[1.7rem] -translate-x-1/2 sm:top-[1.95rem] lg:top-[2.15rem] ${cardWidthClass}`}
                   initial={false}
                   data-selected={isSelected || undefined}
-                  style={{ zIndex: 20 - depth, transformPerspective: 1600 }}
+                  style={{ zIndex: 20 - depth }}
                   animate={{
                     x: getCardPosition(offset, viewportWidth),
-                    y,
+                    y: 0,
                     scale,
                     opacity,
-                    rotateY,
                   }}
                   transition={
                     jumpedAcross
                       ? {
                           x: { duration: 0.01, ease: 'linear' },
-                          y: { duration: 0.52, ease: slideEase },
+                          y: { duration: 0.01, ease: 'linear' },
                           scale: { duration: 0.52, ease: slideEase },
                           opacity: { duration: 0.22, ease: 'easeOut' },
-                          rotateY: { duration: 0.01, ease: 'linear' },
                         }
                       : {
                           x: { type: 'spring', stiffness: 170, damping: 23, mass: 0.84 },
-                          y: { type: 'spring', stiffness: 176, damping: 24, mass: 0.84 },
+                          y: { duration: 0.01, ease: 'linear' },
                           scale: {
                             type: 'spring',
                             stiffness: 160,
@@ -203,12 +198,6 @@ export function CompanionCarousel() {
                             mass: 0.82,
                           },
                           opacity: { duration: 0.24, ease: 'easeOut' },
-                          rotateY: {
-                            type: 'spring',
-                            stiffness: 142,
-                            damping: 24,
-                            mass: 0.86,
-                          },
                         }
                   }
                   whileHover={

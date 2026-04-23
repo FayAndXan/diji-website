@@ -9,7 +9,7 @@ export function HeroCopy() {
 
   return (
     <motion.div
-      className="relative z-10 max-w-[24rem] pt-[clamp(2.8rem,8.8vh,5.45rem)] md:pb-6 lg:pb-8 sm:max-w-[25rem]"
+      className="relative z-10 max-w-[24rem] pt-[clamp(1.75rem,4.8vh,2.85rem)] sm:max-w-[25rem]"
       initial="hidden"
       animate="show"
       variants={{
