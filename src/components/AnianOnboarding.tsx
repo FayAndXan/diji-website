@@ -40,7 +40,7 @@ interface FormState {
   experienceLevel: string
 }
 
-const apiBase = (import.meta.env.VITE_ANIAN_API_BASE || '').replace(/\/$/, '')
+const apiBase = (import.meta.env.VITE_ANIAN_API_BASE || 'https://anian-api.dijicomp.com').replace(/\/$/, '')
 
 const timezones = [
   'Asia/Shanghai',
