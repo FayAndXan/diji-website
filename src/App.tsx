@@ -1,3 +1,4 @@
+import { AnianOnboarding } from './components/AnianOnboarding'
 import { CompanionCarousel } from './components/CompanionCarousel'
 import { CursorFx } from './components/CursorFx'
 import { Footer } from './components/Footer'
@@ -6,6 +7,14 @@ import { HeroBackdrop } from './components/HeroBackdrop'
 import { HeroCopy } from './components/HeroCopy'
 
 function App() {
+  const isAnianSite =
+    window.location.hostname.toLowerCase().startsWith('anian.') ||
+    window.location.pathname.toLowerCase().startsWith('/anian')
+
+  if (isAnianSite) {
+    return <AnianOnboarding />
+  }
+
   return (
     <main className="overflow-x-clip bg-[#031017] text-[#f3f2ea]">
       <CursorFx />

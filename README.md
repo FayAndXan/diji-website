@@ -1,5 +1,17 @@
 # React + TypeScript + Vite
 
+## Anian Subdomain
+
+`anian.dijicomp.com` renders the Anian onboarding flow through host detection. Local testing path:
+
+```bash
+npm run dev -- --host 127.0.0.1
+open http://127.0.0.1:5173/anian
+```
+
+The onboarding form posts to `VITE_ANIAN_API_BASE` and defaults to `https://anian-api.dijicomp.com`.
+The WeChat card expects Hermes to return an Official Account scene token / QR URL; WhatsApp remains disabled as coming soon.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
