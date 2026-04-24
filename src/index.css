@@ -184,15 +184,6 @@ a {
     transform: translateX(310%) skewX(-22deg);
   }
 
-  .anian-input {
-    @apply min-h-12 w-full rounded-[16px] border border-[#d8d8c7]/14 bg-black/20 px-4 text-[0.98rem] text-[#f2f0e9] outline-none transition placeholder:text-[#e8e5d6]/34 focus:border-[#d9dbca]/62 focus:bg-black/28 focus:ring-2 focus:ring-[#d9dbca]/16;
-  }
-
-  .anian-input option {
-    background: #11120f;
-    color: #f2f0e9;
-  }
-
   .companion-card {
     @apply relative isolate min-h-[11rem] overflow-hidden rounded-[22px] border border-white/12 bg-[linear-gradient(180deg,rgba(6,22,28,0.3)_0%,rgba(5,17,22,0.48)_100%)] px-5 py-4 text-left backdrop-blur-md transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.55)];
     box-shadow:
