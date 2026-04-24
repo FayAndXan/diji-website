@@ -9,7 +9,7 @@ npm run dev -- --host 127.0.0.1
 open http://127.0.0.1:5173/anian
 ```
 
-The onboarding form posts to `VITE_ANIAN_API_BASE` and defaults to `https://anian-api.dijicomp.com`.
+The onboarding form posts to same-origin `/public/anian/onboarding` by default. Set `VITE_ANIAN_API_BASE` only if the API must live on a separate host.
 The WeChat card expects Hermes to return an Official Account scene token / QR URL; WhatsApp remains disabled as coming soon.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
