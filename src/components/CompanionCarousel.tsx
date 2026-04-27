@@ -1,4 +1,11 @@
-import { startTransition, useEffect, useEffectEvent, useRef, useState } from 'react'
+import {
+  startTransition,
+  useEffect,
+  useEffectEvent,
+  useRef,
+  useState,
+  type PointerEvent,
+} from 'react'
 
 import { motion, useReducedMotion } from 'framer-motion'
 
@@ -6,6 +13,7 @@ import { companions } from '../data/companions'
 import { ChevronIcon, CompanionGlyph, LockIcon } from './icons'
 
 const slideEase = [0.22, 1, 0.36, 1] as const
+const tiltSpring = { type: 'spring', stiffness: 190, damping: 18, mass: 0.75 } as const
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max)
@@ -45,6 +53,7 @@ function getCardSizeClass(viewportWidth: number) {
 export function CompanionCarousel() {
   const [selectedIndex, setSelectedIndex] = useState(2)
   const [isPaused, setIsPaused] = useState(false)
+  const [tilt, setTilt] = useState({ index: -1, rotateX: 0, rotateY: 0 })
   const [viewportWidth, setViewportWidth] = useState(() =>
     typeof window === 'undefined' ? 1440 : window.innerWidth,
   )
@@ -84,6 +93,26 @@ export function CompanionCarousel() {
         (current) => (current + direction + companions.length) % companions.length,
       )
     })
+  }
+
+  const updateCardTilt = (event: PointerEvent<HTMLButtonElement>, index: number) => {
+    if (shouldReduceMotion || event.pointerType !== 'mouse') {
+      return
+    }
+
+    const bounds = event.currentTarget.getBoundingClientRect()
+    const x = (event.clientX - bounds.left) / bounds.width - 0.5
+    const y = (event.clientY - bounds.top) / bounds.height - 0.5
+
+    setTilt({
+      index,
+      rotateX: clamp(-y * 2.2, -1.25, 1.25),
+      rotateY: clamp(x * 2.2, -1.25, 1.25),
+    })
+  }
+
+  const clearCardTilt = () => {
+    setTilt({ index: -1, rotateX: 0, rotateY: 0 })
   }
 
   useEffect(() => {
@@ -130,7 +159,7 @@ export function CompanionCarousel() {
           <div className="ml-1 flex items-center gap-2">
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-[16px] border border-white/12 bg-white/[0.04] text-white/76 transition-colors duration-300 hover:border-[var(--diji-border-strong)] hover:text-[var(--diji-cream)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.52)] sm:h-11 sm:w-11"
+              className="diji-surface inline-flex h-10 w-10 items-center justify-center rounded-[16px] border border-white/12 bg-white/[0.04] text-white/76 transition-colors duration-300 hover:border-[var(--diji-border-strong)] hover:text-[var(--diji-cream)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.52)] sm:h-11 sm:w-11"
               aria-label="Select previous companion"
               onClick={() => shiftCompanion(-1)}
               data-cursor-mode="surface"
@@ -139,7 +168,7 @@ export function CompanionCarousel() {
             </button>
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-[16px] border border-white/12 bg-white/[0.04] text-white/76 transition-colors duration-300 hover:border-[var(--diji-border-strong)] hover:text-[var(--diji-cream)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.52)] sm:h-11 sm:w-11"
+              className="diji-surface inline-flex h-10 w-10 items-center justify-center rounded-[16px] border border-white/12 bg-white/[0.04] text-white/76 transition-colors duration-300 hover:border-[var(--diji-border-strong)] hover:text-[var(--diji-cream)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.52)] sm:h-11 sm:w-11"
               aria-label="Select next companion"
               onClick={() => shiftCompanion(1)}
               data-cursor-mode="surface"
@@ -161,6 +190,7 @@ export function CompanionCarousel() {
                 companions.length,
               )
               const isSelected = offset === 0
+              const isTilted = tilt.index === index
               const depth = Math.abs(offset)
               const jumpedAcross = Math.abs(previousOffset - offset) > 2
               const opacity = isSelected ? 1 : depth === 1 ? 0.66 : 0.28
@@ -177,6 +207,9 @@ export function CompanionCarousel() {
                   animate={{
                     x: getCardPosition(offset, viewportWidth),
                     y: 0,
+                    rotateX: isTilted ? tilt.rotateX : 0,
+                    rotateY: isTilted ? tilt.rotateY : 0,
+                    rotateZ: 0,
                     scale,
                     opacity,
                   }}
@@ -185,12 +218,18 @@ export function CompanionCarousel() {
                       ? {
                           x: { duration: 0.01, ease: 'linear' },
                           y: { duration: 0.01, ease: 'linear' },
+                          rotateX: { duration: 0.01, ease: 'linear' },
+                          rotateY: { duration: 0.01, ease: 'linear' },
+                          rotateZ: { duration: 0.01, ease: 'linear' },
                           scale: { duration: 0.52, ease: slideEase },
                           opacity: { duration: 0.22, ease: 'easeOut' },
                         }
                       : {
                           x: { type: 'spring', stiffness: 170, damping: 23, mass: 0.84 },
                           y: { duration: 0.01, ease: 'linear' },
+                          rotateX: tiltSpring,
+                          rotateY: tiltSpring,
+                          rotateZ: tiltSpring,
                           scale: {
                             type: 'spring',
                             stiffness: 160,
@@ -205,8 +244,13 @@ export function CompanionCarousel() {
                       ? undefined
                       : {
                           scale: isSelected ? 1.015 : scale + 0.02,
+                          rotateZ: [0, 0.32, -0.22, 0.08, 0],
+                          transition: { duration: 0.72, ease: slideEase },
                         }
                   }
+                  onPointerMove={(event) => updateCardTilt(event, index)}
+                  onPointerLeave={clearCardTilt}
+                  onPointerCancel={clearCardTilt}
                   aria-pressed={isSelected}
                   aria-label={`Select ${companion.name}`}
                   onClick={() => selectCompanion(index)}
