@@ -224,12 +224,28 @@ a {
   }
 
   .companion-card[data-selected='true'] {
-    border-color: rgba(245, 229, 192, 0.54);
-    background: linear-gradient(180deg, rgba(8, 25, 31, 0.54) 0%, rgba(7, 20, 26, 0.68) 100%);
+    border-color: transparent;
+    background:
+      linear-gradient(180deg, rgba(8, 25, 31, 0.96) 0%, rgba(7, 20, 26, 0.97) 100%)
+        padding-box,
+      linear-gradient(
+          var(--companion-card-border-angle),
+          rgba(245, 229, 192, 0.24) 0%,
+          rgba(245, 229, 192, 0.96) 18%,
+          rgba(162, 220, 255, 0.72) 25%,
+          rgba(245, 229, 192, 0.2) 34%,
+          rgba(245, 229, 192, 0.08) 58%,
+          rgba(245, 229, 192, 0.62) 76%,
+          rgba(5, 16, 22, 0.18) 100%
+        )
+        border-box;
+    background-clip: padding-box, border-box;
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.18),
       0 22px 64px rgba(2, 10, 16, 0.3),
-      0 0 0 1px rgba(245, 229, 192, 0.12);
+      0 0 0 1px rgba(245, 229, 192, 0.1),
+      0 0 24px rgba(245, 229, 192, 0.08);
+    animation: companion-card-border-spin 4.8s linear infinite;
   }
 
   .companion-card > * {
@@ -238,60 +254,7 @@ a {
   }
 
   .companion-card-orbit {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    opacity: 0;
-  }
-
-  .companion-card[data-selected='true'] .companion-card-orbit {
-    opacity: 1;
-  }
-
-  .companion-card-orbit::before {
-    content: '';
-    position: absolute;
-    width: 4.2rem;
-    height: 2px;
-    border-radius: 999px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(244, 231, 199, 0.18) 14%,
-      rgba(244, 231, 199, 0.92) 48%,
-      rgba(162, 220, 255, 0.88) 72%,
-      transparent 100%
-    );
-    box-shadow:
-      0 0 12px rgba(244, 231, 199, 0.32),
-      0 0 22px rgba(162, 220, 255, 0.18);
-    opacity: 0;
-    left: 0;
-    top: 0;
-    offset-path: inset(1px round 22px);
-    offset-distance: 0%;
-    offset-rotate: auto;
-    offset-anchor: center;
-  }
-
-  .companion-card-orbit::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    box-shadow: inset 0 0 0 1px rgba(244, 231, 199, 0.08);
-    opacity: 0;
-  }
-
-  .companion-card[data-selected='true'] .companion-card-orbit::before {
-    opacity: 1;
-    animation: companion-card-runner 5.4s linear infinite;
-  }
-
-  .companion-card[data-selected='true'] .companion-card-orbit::after {
-    opacity: 1;
+    display: none;
   }
 
   .footer-stage {
@@ -380,100 +343,15 @@ a {
   }
 }
 
-@keyframes companion-card-runner {
-  0% {
-    offset-distance: 0%;
-    opacity: 0;
-  }
-
-  6% {
-    opacity: 1;
-  }
-
-  94% {
-    opacity: 1;
-  }
-
-  100% {
-    offset-distance: 100%;
-    opacity: 0;
-  }
+@property --companion-card-border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
 
-@supports not (offset-path: inset(1px round 22px)) {
-  .companion-card-orbit::before {
-    offset-path: none;
-    offset-distance: 0%;
-    offset-rotate: 0deg;
-  }
-
-  @keyframes companion-card-runner {
-    0% {
-      top: 0%;
-      left: 14%;
-      transform: translate(-50%, -50%) rotate(0deg);
-      opacity: 0;
-    }
-
-    6% {
-      opacity: 1;
-    }
-
-    24% {
-      top: 0%;
-      left: 86%;
-      transform: translate(-50%, -50%) rotate(0deg);
-      opacity: 1;
-    }
-
-    25% {
-      top: 14%;
-      left: 100%;
-      transform: translate(-50%, -50%) rotate(90deg);
-      opacity: 1;
-    }
-
-    49% {
-      top: 86%;
-      left: 100%;
-      transform: translate(-50%, -50%) rotate(90deg);
-      opacity: 1;
-    }
-
-    50% {
-      top: 100%;
-      left: 86%;
-      transform: translate(-50%, -50%) rotate(180deg);
-      opacity: 1;
-    }
-
-    74% {
-      top: 100%;
-      left: 14%;
-      transform: translate(-50%, -50%) rotate(180deg);
-      opacity: 1;
-    }
-
-    75% {
-      top: 86%;
-      left: 0%;
-      transform: translate(-50%, -50%) rotate(270deg);
-      opacity: 1;
-    }
-
-    94% {
-      top: 14%;
-      left: 0%;
-      transform: translate(-50%, -50%) rotate(270deg);
-      opacity: 1;
-    }
-
-    100% {
-      top: 0%;
-      left: 14%;
-      transform: translate(-50%, -50%) rotate(360deg);
-      opacity: 0;
-    }
+@keyframes companion-card-border-spin {
+  to {
+    --companion-card-border-angle: 360deg;
   }
 }
 
