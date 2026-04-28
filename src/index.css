@@ -224,28 +224,13 @@ a {
   }
 
   .companion-card[data-selected='true'] {
-    border-color: transparent;
-    background:
-      linear-gradient(180deg, rgba(8, 25, 31, 0.96) 0%, rgba(7, 20, 26, 0.97) 100%)
-        padding-box,
-      linear-gradient(
-          var(--companion-card-border-angle),
-          rgba(245, 229, 192, 0.24) 0%,
-          rgba(245, 229, 192, 0.96) 18%,
-          rgba(162, 220, 255, 0.72) 25%,
-          rgba(245, 229, 192, 0.2) 34%,
-          rgba(245, 229, 192, 0.08) 58%,
-          rgba(245, 229, 192, 0.62) 76%,
-          rgba(5, 16, 22, 0.18) 100%
-        )
-        border-box;
-    background-clip: padding-box, border-box;
+    border-color: rgba(245, 229, 192, 0.22);
+    background: linear-gradient(180deg, rgba(8, 25, 31, 0.54) 0%, rgba(7, 20, 26, 0.68) 100%);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.18),
       0 22px 64px rgba(2, 10, 16, 0.3),
       0 0 0 1px rgba(245, 229, 192, 0.1),
       0 0 24px rgba(245, 229, 192, 0.08);
-    animation: companion-card-border-spin 4.8s linear infinite;
   }
 
   .companion-card > * {
@@ -254,7 +239,41 @@ a {
   }
 
   .companion-card-orbit {
-    display: none;
+    position: absolute;
+    inset: -1px;
+    z-index: 2;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    padding: 2px;
+    background:
+      conic-gradient(
+        from var(--companion-card-border-angle),
+        transparent 0deg,
+        transparent 212deg,
+        rgba(245, 229, 192, 0.12) 238deg,
+        rgba(245, 229, 192, 0.98) 265deg,
+        rgba(162, 220, 255, 0.72) 286deg,
+        rgba(245, 229, 192, 0.16) 312deg,
+        transparent 338deg,
+        transparent 360deg
+      );
+    filter:
+      drop-shadow(0 0 8px rgba(245, 229, 192, 0.26))
+      drop-shadow(0 0 18px rgba(162, 220, 255, 0.12));
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .companion-card[data-selected='true'] .companion-card-orbit {
+    opacity: 1;
+    animation: companion-card-border-spin 4.8s linear infinite;
   }
 
   .footer-stage {
