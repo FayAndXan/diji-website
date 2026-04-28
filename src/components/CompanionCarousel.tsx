@@ -237,7 +237,7 @@ export function CompanionCarousel() {
         </div>
       </div>
 
-      <div className="mt-[-0.55rem] flex items-center justify-center gap-2 sm:mt-[-0.35rem] lg:mt-[-0.15rem]">
+      <div className="mt-[-1.45rem] flex items-center justify-center gap-2 sm:mt-[-1.25rem] lg:mt-[-1rem]">
         {companions.map((companion, index) => (
           <button
             key={companion.id}
