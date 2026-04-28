@@ -1,23 +1,18 @@
 export function HeroBackdrop() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden bg-[#081723]">
-      <img
-        src="/assets/diji-hero-background.jpg"
-        alt=""
-        className="absolute inset-0 h-full w-full scale-105 object-cover object-[center_66%] opacity-38 blur-[14px] saturate-[1.08] brightness-[1.05] contrast-[1.02]"
-      />
-
-      <img
-        src="/assets/diji-hero-background.jpg"
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover object-[center_64%] brightness-[1.04] saturate-[1.08] contrast-[1.03] 2xl:hidden"
-      />
-
-      <img
-        src="/assets/diji-hero-background.jpg"
-        alt=""
-        className="absolute inset-0 hidden h-full w-full object-contain object-[center_61%] brightness-[1.04] saturate-[1.08] contrast-[1.03] 2xl:block"
-      />
+      <video
+        className="absolute inset-0 h-full w-full object-cover object-[center_62%] brightness-[1.04] saturate-[1.08] contrast-[1.03]"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/assets/diji-hero-background.jpg"
+        aria-hidden="true"
+      >
+        <source src="/assets/diji-hero-background.mp4" type="video/mp4" />
+      </video>
 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_54%,rgba(255,242,210,0.24),transparent_21%),radial-gradient(circle_at_14%_20%,rgba(255,232,190,0.2),transparent_19%),radial-gradient(circle_at_86%_22%,rgba(255,235,198,0.18),transparent_21%),radial-gradient(circle_at_54%_17%,rgba(164,219,248,0.14),transparent_26%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,20,28,0.05)_0%,rgba(8,20,28,0.01)_18%,rgba(7,17,24,0.05)_46%,rgba(4,11,16,0.32)_100%)]" />

@@ -30,7 +30,7 @@ export function HeroCopy() {
         }}
       >
         <p className="relative -top-[0.35rem] w-full pl-[0.1rem] font-display text-[0.76rem] uppercase tracking-[0.34em] text-[#efe6cf]/82 sm:text-[0.8rem]">
-          Your World. Your Companion.
+          Your World. Your AI.
         </p>
         <h1 className="-ml-[0.2rem] w-full pt-1 font-brand text-[clamp(1.22rem,1.9vw,1.76rem)] leading-[0.76] tracking-[0.028em] text-[var(--diji-cream)]">
           DIJI
@@ -45,10 +45,10 @@ export function HeroCopy() {
         }}
       >
         <p className="font-display text-[0.82rem] uppercase tracking-[0.24em] text-[#efe6cf]/86 sm:text-[0.86rem]">
-          Digital Companion. Human Connection.
+          Digital Companions
         </p>
         <p className="max-w-[21rem] text-[0.98rem] leading-7 text-white/78 sm:text-[1.02rem] sm:leading-7">
-          AI companions that understand you. Built to evolve. Designed to stay.
+          AI companions that remember you. Built to evolve. Designed around your needs.
         </p>
       </motion.div>
 
@@ -65,7 +65,7 @@ export function HeroCopy() {
         </a>
 
         <p className="font-display text-[0.82rem] uppercase tracking-[0.24em] text-white/52 sm:text-[0.86rem]">
-          Calm daylight sci-fi. Minimal game-inspired motion.
+          Talk to them on your favorite messaging app.
         </p>
       </motion.div>
     </motion.div>
