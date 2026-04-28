@@ -50,14 +50,14 @@ export function Header() {
         <div className="flex items-center justify-end gap-2 sm:gap-3 md:justify-self-end">
           <button
             type="button"
-            className="diji-surface hidden h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/[0.045] text-white/72 transition-colors duration-300 hover:border-[var(--diji-border-strong)] hover:text-[var(--diji-cream)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.52)] md:inline-flex"
+            className="hidden h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/[0.045] text-white/72 transition-colors duration-300 hover:border-[var(--diji-border-strong)] hover:text-[var(--diji-cream)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.52)] md:inline-flex"
             aria-label="Expand DIJI world"
             data-cursor-mode="surface"
           >
             <ExpandCornersIcon className="h-4 w-4" />
           </button>
 
-          <div className="user-chip diji-surface hidden md:inline-flex">
+          <div className="user-chip hidden md:inline-flex">
             <ProfileIcon className="h-4 w-4 text-[var(--diji-cream)]" />
             <span>USER_047</span>
             <span className="h-2 w-2 rounded-full bg-[#9dd7a8] shadow-[0_0_14px_rgba(157,215,168,0.8)]" />
@@ -65,7 +65,7 @@ export function Header() {
 
           <button
             type="button"
-            className="diji-surface inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/[0.045] text-white/74 transition-colors duration-300 hover:border-[var(--diji-border-strong)] hover:text-[var(--diji-cream)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.52)] md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/[0.045] text-white/74 transition-colors duration-300 hover:border-[var(--diji-border-strong)] hover:text-[var(--diji-cream)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.52)] md:hidden"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-navigation"
             aria-label={isMenuOpen ? 'Close navigation' : 'Open navigation'}

@@ -184,29 +184,11 @@ a {
     transform: translateX(310%) skewX(-22deg);
   }
 
-  .diji-surface {
-    transform-style: preserve-3d;
-    will-change: transform, box-shadow;
-    transition:
-      transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
-      box-shadow 320ms ease,
-      border-color 260ms ease,
-      background-color 260ms ease;
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .diji-surface:hover,
-    .diji-surface:focus-visible {
-      animation: diji-surface-wobble 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
-    }
-  }
-
   .companion-card {
     @apply relative isolate min-h-[11rem] overflow-hidden rounded-[22px] border border-white/12 bg-[linear-gradient(180deg,rgba(6,22,28,0.3)_0%,rgba(5,17,22,0.48)_100%)] px-5 py-4 text-left backdrop-blur-md transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(243,232,207,0.55)];
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.08),
       0 18px 50px rgba(2, 10, 16, 0.22);
-    transform-style: preserve-3d;
   }
 
   .companion-card::before {
@@ -218,7 +200,6 @@ a {
       linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 28%),
       linear-gradient(150deg, rgba(224, 232, 255, 0.09), transparent 48%);
     opacity: 0.5;
-    z-index: 0;
     transition: opacity 300ms ease;
   }
 
@@ -229,7 +210,6 @@ a {
     border-radius: 50%;
     background: radial-gradient(circle, rgba(245, 229, 192, 0.18), transparent 58%);
     opacity: 0;
-    z-index: 0;
     transform: scale(0.75);
     transition:
       opacity 320ms ease,
@@ -254,26 +234,16 @@ a {
 
   .companion-card > * {
     position: relative;
-    z-index: 3;
+    z-index: 1;
   }
 
   .companion-card-orbit {
     position: absolute;
-    inset: -2px;
-    z-index: 2;
+    inset: 0;
+    z-index: 0;
     border-radius: inherit;
     pointer-events: none;
     opacity: 0;
-    padding: 1.25px;
-    overflow: hidden;
-    -webkit-mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
   }
 
   .companion-card[data-selected='true'] .companion-card-orbit {
@@ -283,45 +253,41 @@ a {
   .companion-card-orbit::before {
     content: '';
     position: absolute;
-    inset: 0;
-    border-radius: inherit;
+    width: 4.2rem;
+    height: 2px;
+    border-radius: 999px;
     background: linear-gradient(
-      160deg,
+      90deg,
       transparent 0%,
-      rgba(255, 248, 224, 0.08) 14%,
-      rgba(255, 232, 190, 0.92) 20%,
-      rgba(115, 151, 156, 0.34) 25%,
-      transparent 35%,
-      transparent 40%,
-      rgba(255, 248, 224, 0.1) 55%,
-      rgba(255, 232, 190, 0.9) 60%,
-      rgba(115, 151, 156, 0.3) 65%,
-      transparent 75%,
-      transparent 80%,
-      rgba(255, 248, 224, 0.1) 95%,
-      rgba(255, 232, 190, 0.85) 100%
+      rgba(244, 231, 199, 0.18) 14%,
+      rgba(244, 231, 199, 0.92) 48%,
+      rgba(162, 220, 255, 0.88) 72%,
+      transparent 100%
     );
-    background-size: 300% 300%;
     box-shadow:
-      0 0 14px rgba(244, 231, 199, 0.2),
-      0 0 24px rgba(162, 220, 255, 0.12);
+      0 0 12px rgba(244, 231, 199, 0.32),
+      0 0 22px rgba(162, 220, 255, 0.18);
     opacity: 0;
+    left: 0;
+    top: 0;
+    offset-path: inset(1px round 22px);
+    offset-distance: 0%;
+    offset-rotate: auto;
+    offset-anchor: center;
   }
 
   .companion-card-orbit::after {
     content: '';
     position: absolute;
-    inset: 2px;
+    inset: 0;
     border-radius: inherit;
-    box-shadow:
-      inset 0 0 0 1px rgba(244, 231, 199, 0.08),
-      0 0 28px rgba(244, 231, 199, 0.1);
+    box-shadow: inset 0 0 0 1px rgba(244, 231, 199, 0.08);
     opacity: 0;
   }
 
   .companion-card[data-selected='true'] .companion-card-orbit::before {
     opacity: 1;
-    animation: companion-card-gradient-stroke 2.85s linear infinite;
+    animation: companion-card-runner 5.4s linear infinite;
   }
 
   .companion-card[data-selected='true'] .companion-card-orbit::after {
@@ -414,31 +380,100 @@ a {
   }
 }
 
-@keyframes diji-surface-wobble {
+@keyframes companion-card-runner {
   0% {
-    transform: perspective(900px) rotateX(0deg) rotateY(0deg) translateZ(0);
+    offset-distance: 0%;
+    opacity: 0;
   }
 
-  34% {
-    transform: perspective(900px) rotateX(0.75deg) rotateY(-0.95deg) translateZ(0);
+  6% {
+    opacity: 1;
   }
 
-  68% {
-    transform: perspective(900px) rotateX(-0.38deg) rotateY(0.52deg) translateZ(0);
+  94% {
+    opacity: 1;
   }
 
   100% {
-    transform: perspective(900px) rotateX(0deg) rotateY(0deg) translateZ(0);
+    offset-distance: 100%;
+    opacity: 0;
   }
 }
 
-@keyframes companion-card-gradient-stroke {
-  0% {
-    background-position: 15% 15%;
+@supports not (offset-path: inset(1px round 22px)) {
+  .companion-card-orbit::before {
+    offset-path: none;
+    offset-distance: 0%;
+    offset-rotate: 0deg;
   }
 
-  100% {
-    background-position: 75% 75%;
+  @keyframes companion-card-runner {
+    0% {
+      top: 0%;
+      left: 14%;
+      transform: translate(-50%, -50%) rotate(0deg);
+      opacity: 0;
+    }
+
+    6% {
+      opacity: 1;
+    }
+
+    24% {
+      top: 0%;
+      left: 86%;
+      transform: translate(-50%, -50%) rotate(0deg);
+      opacity: 1;
+    }
+
+    25% {
+      top: 14%;
+      left: 100%;
+      transform: translate(-50%, -50%) rotate(90deg);
+      opacity: 1;
+    }
+
+    49% {
+      top: 86%;
+      left: 100%;
+      transform: translate(-50%, -50%) rotate(90deg);
+      opacity: 1;
+    }
+
+    50% {
+      top: 100%;
+      left: 86%;
+      transform: translate(-50%, -50%) rotate(180deg);
+      opacity: 1;
+    }
+
+    74% {
+      top: 100%;
+      left: 14%;
+      transform: translate(-50%, -50%) rotate(180deg);
+      opacity: 1;
+    }
+
+    75% {
+      top: 86%;
+      left: 0%;
+      transform: translate(-50%, -50%) rotate(270deg);
+      opacity: 1;
+    }
+
+    94% {
+      top: 14%;
+      left: 0%;
+      transform: translate(-50%, -50%) rotate(270deg);
+      opacity: 1;
+    }
+
+    100% {
+      top: 0%;
+      left: 14%;
+      transform: translate(-50%, -50%) rotate(360deg);
+      opacity: 0;
+    }
   }
 }
 

@@ -30,7 +30,7 @@ export function HeroCopy() {
         }}
       >
         <p className="relative -top-[0.35rem] w-full pl-[0.1rem] font-display text-[0.76rem] uppercase tracking-[0.34em] text-[#efe6cf]/82 sm:text-[0.8rem]">
-          Persistent AI Companions.
+          Your World. Your Companion.
         </p>
         <h1 className="-ml-[0.2rem] w-full pt-1 font-brand text-[clamp(1.22rem,1.9vw,1.76rem)] leading-[0.76] tracking-[0.028em] text-[var(--diji-cream)]">
           DIJI
@@ -45,10 +45,10 @@ export function HeroCopy() {
         }}
       >
         <p className="font-display text-[0.82rem] uppercase tracking-[0.24em] text-[#efe6cf]/86 sm:text-[0.86rem]">
-          Companion Systems With Human Gravity.
+          Digital Companion. Human Connection.
         </p>
         <p className="max-w-[21rem] text-[0.98rem] leading-7 text-white/78 sm:text-[1.02rem] sm:leading-7">
-          Dedicated AI companions for the parts of life that need continuity.
+          AI companions that understand you. Built to evolve. Designed to stay.
         </p>
       </motion.div>
 
@@ -59,13 +59,13 @@ export function HeroCopy() {
           show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easing } },
         }}
       >
-        <a href="#companions" className="diji-button diji-surface" data-cursor-mode="surface">
-          <span>Explore The Companions</span>
+        <a href="#companions" className="diji-button" data-cursor-mode="surface">
+          <span>Choose Your Companion</span>
           <ArrowRightIcon className="h-4 w-4" />
         </a>
 
         <p className="font-display text-[0.82rem] uppercase tracking-[0.24em] text-white/52 sm:text-[0.86rem]">
-          Private memory. Domain intelligence. Real product systems.
+          Calm daylight sci-fi. Minimal game-inspired motion.
         </p>
       </motion.div>
     </motion.div>

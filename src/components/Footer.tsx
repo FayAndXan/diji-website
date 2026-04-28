@@ -15,11 +15,9 @@ const socialLinks = [
 ]
 
 const resourceLinks = [
-  { label: 'DIJI Core', href: '#companions' },
-  { label: 'Bryan / Longevity', href: '#companions' },
-  { label: 'Anian / Manifestation', href: '#companions' },
-  { label: 'Demi / Beauty', href: '#companions' },
-  { label: 'Joi / Presence', href: '#companions' },
+  { label: 'Bryan companion surface', href: '#companions' },
+  { label: 'Companion updates', href: 'mailto:fay@dijicomp.com?subject=DIJI%20updates' },
+  { label: 'Deployment notes', href: 'mailto:fay@dijicomp.com?subject=DIJI%20deployment' },
 ]
 
 export function Footer() {
@@ -30,7 +28,7 @@ export function Footer() {
       <div className="relative z-10 mx-auto max-w-[1540px] px-4 pb-4 pt-3 sm:px-6 sm:pb-5 sm:pt-4 md:px-8 lg:px-10 xl:px-14">
         <motion.section
           id="about"
-          className="footer-stage diji-surface"
+          className="footer-stage"
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
