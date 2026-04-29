@@ -3,7 +3,7 @@ import { startTransition, useEffect, useEffectEvent, useRef, useState } from 're
 import { motion, useReducedMotion } from 'framer-motion'
 
 import { companions } from '../data/companions'
-import { ChevronIcon, CompanionGlyph, LockIcon } from './icons'
+import { ChevronIcon, LockIcon } from './icons'
 
 const slideEase = [0.22, 1, 0.36, 1] as const
 
@@ -213,23 +213,16 @@ export function CompanionCarousel() {
                   data-cursor-mode="surface"
                 >
                   <div className="flex items-start justify-between">
-                    {companion.icon ? (
-                      <CompanionGlyph
-                        icon={companion.icon}
-                        className="h-8 w-8 text-[var(--diji-cream)]"
-                      />
-                    ) : (
-                      <span className="h-8 w-8" aria-hidden="true" />
-                    )}
+                    <span className="h-8 w-8" aria-hidden="true" />
                     <LockIcon className="h-4 w-4 text-white/48" />
                   </div>
 
                   <div className="mt-5 space-y-3 text-center">
                     <h3
-                      className={`text-[1.58rem] uppercase tracking-[0.14em] text-[var(--diji-cream)] sm:text-[1.7rem] ${
+                      className={`font-display text-[1.58rem] text-[var(--diji-cream)] sm:text-[1.7rem] ${
                         companion.id === 'bryan'
-                          ? 'font-bryan tracking-[0.02em]'
-                          : 'font-display'
+                          ? 'normal-case tracking-[0.08em]'
+                          : 'uppercase tracking-[0.14em]'
                       } ${companion.id === 'joi' ? 'tracking-[0.2em]' : ''}`}
                     >
                       {companion.name}

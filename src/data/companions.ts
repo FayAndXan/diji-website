@@ -1,9 +1,6 @@
-export type CompanionIconKey = 'bryan'
-
 export interface CompanionProfile {
   id: string
   name: string
-  icon?: CompanionIconKey
   domain?: string
   mantra: string
   description: string
@@ -14,7 +11,6 @@ export const companions: CompanionProfile[] = [
   {
     id: 'bryan',
     name: 'Bryan',
-    icon: 'bryan',
     domain: 'Health and Longevity',
     mantra: 'Health and Longevity',
     description: 'A companion for health, habits, biomarkers, and long-term vitality.',
