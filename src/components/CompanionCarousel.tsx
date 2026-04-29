@@ -36,7 +36,7 @@ function getCardPosition(offset: number, viewportWidth: number) {
 }
 
 function getCardSizeClass(viewportWidth: number) {
-  if (viewportWidth < 640) return 'w-[12.2rem]'
+  if (viewportWidth < 640) return 'w-[9.15rem]'
   if (viewportWidth < 1024) return 'w-[13.4rem]'
 
   return 'w-[14.4rem]'
@@ -170,7 +170,7 @@ export function CompanionCarousel() {
                 <motion.button
                   key={companion.id}
                   type="button"
-                  className={`companion-card absolute left-1/2 top-[3.6rem] -translate-x-1/2 sm:top-[3.85rem] lg:top-[4.05rem] ${cardWidthClass}`}
+                  className={`companion-card absolute left-1/2 top-[3.6rem] min-h-[8.25rem] -translate-x-1/2 px-3 py-3 sm:top-[3.85rem] sm:min-h-[11rem] sm:px-5 sm:py-4 lg:top-[4.05rem] ${cardWidthClass}`}
                   initial={false}
                   data-selected={isSelected || undefined}
                   style={{ zIndex: 20 - depth }}
@@ -213,19 +213,19 @@ export function CompanionCarousel() {
                   data-cursor-mode="surface"
                 >
                   <div className="flex items-start justify-between">
-                    <span className="h-8 w-8" aria-hidden="true" />
-                    <LockIcon className="h-4 w-4 text-white/48" />
+                    <span className="h-6 w-6 sm:h-8 sm:w-8" aria-hidden="true" />
+                    <LockIcon className="h-3.5 w-3.5 text-white/48 sm:h-4 sm:w-4" />
                   </div>
 
-                  <div className="mt-5 space-y-3 text-center">
+                  <div className="mt-4 space-y-2 text-center sm:mt-5 sm:space-y-3">
                     <h3
-                      className={`font-display text-[1.58rem] uppercase tracking-[0.14em] text-[var(--diji-cream)] sm:text-[1.7rem] ${
+                      className={`font-display text-[1.18rem] uppercase tracking-[0.14em] text-[var(--diji-cream)] sm:text-[1.7rem] ${
                         companion.id === 'joi' ? 'tracking-[0.2em]' : ''
                       }`}
                     >
                       {companion.name}
                     </h3>
-                    <p className="font-body text-[0.92rem] leading-6 text-white/72">
+                    <p className="font-body text-[0.69rem] leading-5 text-white/72 sm:text-[0.92rem] sm:leading-6">
                       {companion.domain ?? companion.mantra}
                     </p>
                   </div>
