@@ -2,7 +2,7 @@ export function HeroBackdrop() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden bg-[#081723]">
       <video
-        className="absolute inset-0 h-full w-full object-cover object-[center_62%] brightness-[1.04] saturate-[1.08] contrast-[1.03]"
+        className="absolute inset-0 h-full w-full object-cover object-[center_64%] brightness-[1.04] saturate-[1.08] contrast-[1.03]"
         autoPlay
         muted
         loop
