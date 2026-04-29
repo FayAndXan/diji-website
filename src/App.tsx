@@ -22,7 +22,7 @@ function App() {
           <div className="flex flex-1 flex-col pt-6 sm:pt-7 md:pt-8 lg:pt-10">
             <HeroCopy />
 
-            <div className="mt-[clamp(4.6rem,10.1vh,7.5rem)]">
+            <div className="mt-[clamp(3.9rem,8.8vh,6.8rem)]">
               <CompanionCarousel />
             </div>
           </div>

@@ -170,7 +170,7 @@ export function CompanionCarousel() {
                 <motion.button
                   key={companion.id}
                   type="button"
-                  className={`companion-card absolute left-1/2 top-[1.7rem] -translate-x-1/2 sm:top-[1.95rem] lg:top-[2.15rem] ${cardWidthClass}`}
+                  className={`companion-card absolute left-1/2 top-[3.6rem] -translate-x-1/2 sm:top-[3.85rem] lg:top-[4.05rem] ${cardWidthClass}`}
                   initial={false}
                   data-selected={isSelected || undefined}
                   style={{ zIndex: 20 - depth }}
