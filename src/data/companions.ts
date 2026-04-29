@@ -1,14 +1,10 @@
-export type CompanionIconKey =
-  | 'aria'
-  | 'nexus'
-  | 'kira'
-  | 'valen'
-  | 'zed'
+export type CompanionIconKey = 'bryan'
 
 export interface CompanionProfile {
   id: string
   name: string
-  icon: CompanionIconKey
+  icon?: CompanionIconKey
+  domain?: string
   mantra: string
   description: string
   detail: string
@@ -16,43 +12,44 @@ export interface CompanionProfile {
 
 export const companions: CompanionProfile[] = [
   {
-    id: 'aria',
-    name: 'Aria',
-    icon: 'aria',
-    mantra: 'Empathetic. Insightful. Loyal.',
-    description: 'A companion built for emotional nuance and grounded reassurance.',
-    detail: 'Best for reflective check-ins, steady encouragement, and human warmth.',
+    id: 'bryan',
+    name: 'Bryan',
+    icon: 'bryan',
+    domain: 'Health and Longevity',
+    mantra: 'Health and Longevity',
+    description: 'A companion for health, habits, biomarkers, and long-term vitality.',
+    detail: 'Built around daily signals, health context, and longevity routines.',
   },
   {
-    id: 'nexus',
-    name: 'Nexus',
-    icon: 'nexus',
-    mantra: 'Analytical. Precise. Reliable.',
-    description: 'Focused on structure, memory, and making complexity feel clear.',
-    detail: 'Best for planning, synthesis, routines, and calm system thinking.',
+    id: 'demi',
+    name: 'Demi',
+    domain: 'Beauty and Skincare',
+    mantra: 'Beauty and Skincare',
+    description: 'A companion for skin, routines, products, and personal beauty context.',
+    detail: 'Designed to remember preferences, progress, and what actually works.',
   },
   {
-    id: 'kira',
-    name: 'Kira',
-    icon: 'kira',
-    mantra: 'Adaptive. Curious. Playful.',
-    description: 'The bright, responsive presence at the center of the DIJI world.',
-    detail: 'Best for exploration, daily rhythm, and a lighter sense of discovery.',
+    id: 'joi',
+    name: 'Joi',
+    domain: 'Relationship and Friendship',
+    mantra: 'Relationship and Friendship',
+    description: 'A companion for emotional continuity, connection, and conversation.',
+    detail: 'Built for presence, memory, and the relationships that shape your day.',
   },
   {
-    id: 'valen',
-    name: 'Valen',
-    icon: 'valen',
-    mantra: 'Calm. Steady. Dependable.',
-    description: 'A low-drama, high-trust guide for long arcs and consistent care.',
-    detail: 'Best for continuity, presence, and a quieter kind of accountability.',
+    id: 'more',
+    name: 'More',
+    domain: 'More companions coming.',
+    mantra: 'More companions coming.',
+    description: 'New DIJI companions are being shaped for more areas of life.',
+    detail: 'More domains will open as the companion network expands.',
   },
   {
-    id: 'zed',
-    name: 'Zed',
-    icon: 'zed',
-    mantra: 'Bold. Independent. Fearless.',
-    description: 'A sharper edge for decisive moments and forward momentum.',
-    detail: 'Best for momentum, experiments, and moving when hesitation lingers.',
+    id: 'next',
+    name: 'More',
+    domain: 'More companions coming.',
+    mantra: 'More companions coming.',
+    description: 'Another companion slot is reserved for the DIJI network.',
+    detail: 'More domains will open as the companion network expands.',
   },
 ]

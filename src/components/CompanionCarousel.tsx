@@ -213,19 +213,29 @@ export function CompanionCarousel() {
                   data-cursor-mode="surface"
                 >
                   <div className="flex items-start justify-between">
-                    <CompanionGlyph
-                      icon={companion.icon}
-                      className="h-8 w-8 text-[var(--diji-cream)]"
-                    />
+                    {companion.icon ? (
+                      <CompanionGlyph
+                        icon={companion.icon}
+                        className="h-8 w-8 text-[var(--diji-cream)]"
+                      />
+                    ) : (
+                      <span className="h-8 w-8" aria-hidden="true" />
+                    )}
                     <LockIcon className="h-4 w-4 text-white/48" />
                   </div>
 
                   <div className="mt-5 space-y-3 text-center">
-                    <h3 className="font-display text-[1.58rem] uppercase tracking-[0.14em] text-[var(--diji-cream)] sm:text-[1.7rem]">
+                    <h3
+                      className={`text-[1.58rem] uppercase tracking-[0.14em] text-[var(--diji-cream)] sm:text-[1.7rem] ${
+                        companion.id === 'bryan'
+                          ? 'font-bryan tracking-[0.02em]'
+                          : 'font-display'
+                      } ${companion.id === 'joi' ? 'tracking-[0.2em]' : ''}`}
+                    >
                       {companion.name}
                     </h3>
                     <p className="font-body text-[0.92rem] leading-6 text-white/72">
-                      {companion.mantra}
+                      {companion.domain ?? companion.mantra}
                     </p>
                   </div>
 

@@ -44,11 +44,8 @@ export function HeroCopy() {
           show: { opacity: 1, y: 0, transition: { duration: 0.72, ease: easing } },
         }}
       >
-        <p className="font-display text-[0.82rem] uppercase tracking-[0.24em] text-[#efe6cf]/86 sm:text-[0.86rem]">
-          Digital Companions
-        </p>
         <p className="max-w-[21rem] text-[0.98rem] leading-7 text-white/78 sm:text-[1.02rem] sm:leading-7">
-          AI companions that remember you. Built to evolve. Designed around your needs.
+          Digital companions that remember you. Built to evolve. Designed around your needs.
         </p>
       </motion.div>
 

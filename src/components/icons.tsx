@@ -112,58 +112,19 @@ export function DijiMarkIcon(props: IconProps) {
   )
 }
 
-function AriaIcon(props: IconProps) {
+function BryanFingerprintIcon(props: IconProps) {
   return createBaseIcon(
     <>
-      <path d="m24 9 11 20H13Z" strokeWidth="1.8" />
-      <circle cx="24" cy="23" r="2.5" strokeWidth="1.8" />
-      <path d="M24 18v-3" strokeWidth="1.8" />
-    </>,
-    props,
-  )
-}
-
-function NexusIcon(props: IconProps) {
-  return createBaseIcon(
-    <>
-      <circle cx="24" cy="24" r="11" strokeWidth="1.8" />
-      <circle cx="24" cy="24" r="4.5" strokeWidth="1.8" />
-      <path d="M24 9v4M39 24h-4M24 39v-4M9 24h4" strokeWidth="1.8" />
-    </>,
-    props,
-  )
-}
-
-function KiraIcon(props: IconProps) {
-  return createBaseIcon(
-    <>
-      <path d="M15 18a11 11 0 1 1 9 17" strokeWidth="1.8" />
-      <path d="M27 29c0 2.8 1.8 5.3 4.5 6.1" strokeWidth="1.8" />
-      <path d="m33.5 32 3.5 4-5.2 1.6" strokeWidth="1.8" />
-    </>,
-    props,
-  )
-}
-
-function ValenIcon(props: IconProps) {
-  return createBaseIcon(
-    <>
-      <path d="m24 10 10.5 18h-21Z" strokeWidth="1.8" />
-      <path d="M24 18v6" strokeWidth="1.8" />
-      <path d="M20 24h8" strokeWidth="1.8" />
-    </>,
-    props,
-  )
-}
-
-function ZedIcon(props: IconProps) {
-  return createBaseIcon(
-    <>
-      <path
-        d="m16 14 8-4 8 4 4 8-4 8-8 4-8-4-4-8z"
-        strokeWidth="1.8"
-      />
-      <path d="M18 24h12" strokeWidth="1.8" />
+      <path d="M13.7 15.6c0-9.7 20.6-9.7 20.6 0" strokeWidth="2.1" />
+      <path d="M15.9 16.2c0-8.1 16.3-8.1 16.3 1.3" strokeWidth="2.1" />
+      <path d="M18.1 19.4c0-7.3 11.8-7.3 11.8 1.6" strokeWidth="2.1" />
+      <path d="M29.9 21c0 5.8-2.9 10.4-7.2 12.4" strokeWidth="2.1" />
+      <path d="M19.8 21.4c0-5.5 8.6-5.5 8.6 1.3" strokeWidth="2.1" />
+      <path d="M28.4 22.7c0 4.3-2.6 7.9-6.5 9.7" strokeWidth="2.1" />
+      <path d="M21.3 23.5c0-3.9 5.7-3.9 5.7 1.1" strokeWidth="2.1" />
+      <path d="M27 24.6c0 3.3-2.1 5.9-5.1 7.1" strokeWidth="2.1" />
+      <path d="M22.5 25.6c0-2.6 3-2.6 3 0.6" strokeWidth="2.1" />
+      <path d="M25.5 26.2c0 1.8-1.1 3.2-2.3 3.9" strokeWidth="2.1" />
     </>,
     props,
   )
@@ -173,10 +134,7 @@ export function CompanionGlyph({
   icon,
   ...props
 }: IconProps & { icon: CompanionIconKey }) {
-  if (icon === 'aria') return <AriaIcon {...props} />
-  if (icon === 'nexus') return <NexusIcon {...props} />
-  if (icon === 'kira') return <KiraIcon {...props} />
-  if (icon === 'valen') return <ValenIcon {...props} />
+  if (icon === 'bryan') return <BryanFingerprintIcon {...props} />
 
-  return <ZedIcon {...props} />
+  return null
 }
