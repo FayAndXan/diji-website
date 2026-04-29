@@ -219,11 +219,9 @@ export function CompanionCarousel() {
 
                   <div className="mt-5 space-y-3 text-center">
                     <h3
-                      className={`font-display text-[1.58rem] text-[var(--diji-cream)] sm:text-[1.7rem] ${
-                        companion.id === 'bryan'
-                          ? 'normal-case tracking-[0.08em]'
-                          : 'uppercase tracking-[0.14em]'
-                      } ${companion.id === 'joi' ? 'tracking-[0.2em]' : ''}`}
+                      className={`font-display text-[1.58rem] uppercase tracking-[0.14em] text-[var(--diji-cream)] sm:text-[1.7rem] ${
+                        companion.id === 'joi' ? 'tracking-[0.2em]' : ''
+                      }`}
                     >
                       {companion.name}
                     </h3>

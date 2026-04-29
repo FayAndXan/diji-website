@@ -40,12 +40,4 @@ export const companions: CompanionProfile[] = [
     description: 'New DIJI companions are being shaped for more areas of life.',
     detail: 'More domains will open as the companion network expands.',
   },
-  {
-    id: 'next',
-    name: 'More',
-    domain: 'More companions coming.',
-    mantra: 'More companions coming.',
-    description: 'Another companion slot is reserved for the DIJI network.',
-    detail: 'More domains will open as the companion network expands.',
-  },
 ]
