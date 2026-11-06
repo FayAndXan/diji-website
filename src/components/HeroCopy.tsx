@@ -45,7 +45,7 @@ export function HeroCopy() {
         }}
       >
         <p className="max-w-[21rem] text-[0.98rem] leading-7 text-white/78 sm:text-[1.02rem] sm:leading-7">
-          Digital companions that remember you. Built to evolve. Designed around your needs.
+          AI companions for different parts of life. Explore Bryan for health and longevity, and meet Jesus, now in development.
         </p>
       </motion.div>
 
@@ -57,12 +57,12 @@ export function HeroCopy() {
         }}
       >
         <a href="#companions" className="diji-button" data-cursor-mode="surface">
-          <span>Choose Your Companion</span>
+          <span>Explore companions</span>
           <ArrowRightIcon className="h-4 w-4" />
         </a>
 
         <p className="font-display text-[0.82rem] uppercase tracking-[0.24em] text-white/52 sm:text-[0.86rem]">
-          Talk to them on your favorite messaging app.
+          Bryan is in iPhone beta. Jesus is in development.
         </p>
       </motion.div>
     </motion.div>

@@ -1,43 +1,36 @@
 export interface CompanionProfile {
   id: string
   name: string
-  domain?: string
-  mantra: string
+  domain: string
+  status: string
   description: string
   detail: string
+  features: string[]
+  website?: string
 }
 
 export const companions: CompanionProfile[] = [
   {
     id: 'bryan',
     name: 'Bryan',
-    domain: 'Health and Longevity',
-    mantra: 'Health and Longevity',
-    description: 'A companion for health, habits, biomarkers, and long-term vitality.',
-    detail: 'Built around daily signals, health context, and longevity routines.',
+    domain: 'Health and longevity',
+    status: 'iPhone beta',
+    description: 'Your goals, labs and daily habits. One personal longevity companion.',
+    detail: 'Bryan brings your health history, lab results and supplements together to help you build a plan. Review suggested priorities, follow your routines, and approve changes as new information comes in.',
+    features: [
+      'Understand lab results in the context of your health history.',
+      'Review supplements and build routines around your goals.',
+      'Follow your plan with reminders, check-ins and reviews.',
+    ],
+    website: 'https://bryan.dijicomp.com/',
   },
   {
-    id: 'demi',
-    name: 'Demi',
-    domain: 'Beauty and Skincare',
-    mantra: 'Beauty and Skincare',
-    description: 'A companion for skin, routines, products, and personal beauty context.',
-    detail: 'Designed to remember preferences, progress, and what actually works.',
-  },
-  {
-    id: 'joi',
-    name: 'Joi',
-    domain: 'Relationship and Friendship',
-    mantra: 'Relationship and Friendship',
-    description: 'A companion for emotional continuity, connection, and conversation.',
-    detail: 'Built for presence, memory, and the relationships that shape your day.',
-  },
-  {
-    id: 'more',
-    name: 'More',
-    domain: 'More companions coming.',
-    mantra: 'More companions coming.',
-    description: 'New DIJI companions are being shaped for more areas of life.',
-    detail: 'More domains will open as the companion network expands.',
+    id: 'jesus',
+    name: 'Jesus',
+    domain: 'A new companion',
+    status: 'In development',
+    description: 'A new DIJI companion is taking shape.',
+    detail: 'Jesus is currently in development. We will share more about the companion and how to get started here when it is ready.',
+    features: [],
   },
 ]

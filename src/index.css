@@ -83,7 +83,7 @@ a {
   }
 
   .nav-link {
-    @apply relative font-display text-[0.82rem] font-medium uppercase tracking-[0.26em] text-white/68 transition-colors duration-300 hover:text-[var(--diji-cream)] focus-visible:text-[var(--diji-cream)] focus-visible:outline-none sm:text-[0.88rem];
+    @apply relative inline-flex min-h-11 items-center font-display text-[0.82rem] font-medium uppercase tracking-[0.26em] text-white/85 transition-colors duration-300 hover:text-[var(--diji-cream)] focus-visible:text-[var(--diji-cream)] focus-visible:outline-none sm:text-[0.88rem];
   }
 
   .nav-link::after {
@@ -104,14 +104,9 @@ a {
 
   .nav-link:hover::after,
   .nav-link:focus-visible::after,
-  .nav-link[aria-current='page']::after {
+  .nav-link[aria-current='location']::after {
     opacity: 1;
     transform: scaleX(1);
-  }
-
-  .user-chip {
-    @apply inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/[0.045] px-3 py-2 font-display text-[0.76rem] font-medium uppercase tracking-[0.22em] text-white/72;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
   .ui-text-reactive {
@@ -217,13 +212,12 @@ a {
   }
 
   .companion-card:hover::after,
-  .companion-card:focus-visible::after,
-  .companion-card[data-selected='true']::after {
+  .companion-card:focus-visible::after {
     opacity: 1;
     transform: scale(1);
   }
 
-  .companion-card[data-selected='true'] {
+  .companion-card:focus-visible {
     border-color: rgba(245, 229, 192, 0.22);
     background: linear-gradient(180deg, rgba(8, 25, 31, 0.54) 0%, rgba(7, 20, 26, 0.68) 100%);
     box-shadow:
@@ -271,7 +265,8 @@ a {
     mask-composite: exclude;
   }
 
-  .companion-card[data-selected='true'] .companion-card-orbit {
+  .companion-card:hover .companion-card-orbit,
+  .companion-card:focus-visible .companion-card-orbit {
     opacity: 1;
     animation: companion-card-border-spin 4.8s linear infinite;
   }
@@ -387,4 +382,141 @@ a {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+.content-section,
+#companions {
+  scroll-margin-top: 2rem;
+}
+
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  background: var(--diji-cream);
+  color: #031017;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.companion-choice {
+  background: linear-gradient(180deg, rgba(8, 25, 31, 0.72), rgba(7, 20, 26, 0.9));
+}
+
+.companion-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--diji-border);
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  color: var(--diji-cream);
+  font-size: 0.75rem;
+  line-height: 1.25;
+}
+
+.companion-status::before {
+  content: '';
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: var(--diji-cream);
+}
+
+.companion-status[data-available='true']::before {
+  background: #9dd7a8;
+}
+
+.companion-dialog {
+  width: min(36rem, calc(100% - 2rem));
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--diji-border-strong);
+  border-radius: 1.8rem;
+  background: #081923;
+  color: #f3f2ea;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.5);
+}
+
+.companion-dialog::backdrop {
+  background: rgba(2, 9, 14, 0.76);
+  backdrop-filter: blur(10px);
+}
+
+.dialog-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--diji-border);
+  border-radius: 50%;
+}
+
+.resource-card {
+  border: 1px solid var(--diji-border);
+  border-radius: 1.4rem;
+  background: rgba(255, 255, 255, 0.035);
+  padding: 1.5rem;
+  transition: border-color 240ms ease, background 240ms ease;
+}
+
+.resource-card:hover {
+  border-color: var(--diji-border-strong);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--diji-border);
+}
+
+.faq-item summary {
+  padding: 1.2rem 0;
+  cursor: pointer;
+  color: var(--diji-cream);
+}
+
+.faq-item p {
+  padding: 0 0 1.5rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.faq-item a {
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+:where(a, button, summary):focus-visible {
+  outline: 2px solid var(--diji-cream);
+  outline-offset: 4px;
+}
+
+@media (pointer: fine) {
+  body.cursor-enabled:has(dialog[open]) {
+    cursor: auto;
+  }
+}
+
+.mobile-menu {
+  background: rgba(8, 25, 35, 0.96);
+}
+
+.background-toggle {
+  min-height: 44px;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--diji-border);
+  border-radius: 999px;
+  background: rgba(8, 25, 35, 0.8);
+  color: var(--diji-cream);
+  font-size: 0.7rem;
 }

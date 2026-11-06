@@ -1,73 +1,26 @@
-# React + TypeScript + Vite
+# DIJI website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Public companion directory at https://dijicomp.com/. Built with React, TypeScript and Vite.
 
-Currently, two official plugins are available:
+## Develop and verify
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm ci
+npm run dev
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The production output is `dist/`. Browser checks should cover desktop, tablet and phone widths; every navigation destination; both companion dialogs; Escape and focus restoration; the mobile menu; background pause/play; and the contact email link.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Content
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `src/data/companions.ts`: companion descriptions, availability and external website URLs. Only Bryan and Jesus are listed. Jesus is in development; add its purpose and URL once confirmed.
+- `src/data/navigation.ts`: shared header/footer navigation and contact address.
+- Companion cards open a native modal before the visitor follows a website link. No DIJI authentication or account storage is implemented. Bryan handles its own account access.
+- Resources link to Bryan’s existing guides, beta access and privacy information. No newsletter signup or social account is implied.
+
+## Existing hosting
+
+The apex and `www` domains are routed through Cloudflare to Nginx on the existing host. The Nginx document root for these domains is `/var/www/diji`. This is separate from the Bryan backend deployment and the Bryan Cloudflare Pages site.
+
+Build from a clean checkout and push the verified source before publishing. Upload the generated assets first, then replace `index.html` atomically. Preserve `/var/www/diji/legal`, other existing files and older hashed bundles so open browser sessions keep working. No Nginx or Bryan restart is needed for a static update. Verify the public HTML and assets match the release after publishing.

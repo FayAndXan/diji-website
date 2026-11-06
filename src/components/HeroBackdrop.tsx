@@ -1,13 +1,28 @@
+import { useEffect, useRef, useState } from 'react'
+import { useReducedMotion } from 'framer-motion'
+
 export function HeroBackdrop() {
+  const reduceMotion = useReducedMotion()
+  const [paused, setPaused] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    if (reduceMotion || paused) video.pause()
+    else void video.play().catch(() => { /* Keep the poster if autoplay is unavailable. */ })
+  }, [reduceMotion, paused])
+
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden bg-[#081723]">
       <video
+        ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover object-[center_64%] brightness-[1.04] saturate-[1.08] contrast-[1.03]"
-        autoPlay
+        autoPlay={!reduceMotion && !paused}
         muted
         loop
         playsInline
-        preload="auto"
+        preload={reduceMotion ? 'none' : 'metadata'}
         poster="/assets/diji-hero-background.jpg"
         aria-hidden="true"
       >
@@ -15,10 +30,22 @@ export function HeroBackdrop() {
       </video>
 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_54%,rgba(255,242,210,0.24),transparent_21%),radial-gradient(circle_at_14%_20%,rgba(255,232,190,0.2),transparent_19%),radial-gradient(circle_at_86%_22%,rgba(255,235,198,0.18),transparent_21%),radial-gradient(circle_at_54%_17%,rgba(164,219,248,0.14),transparent_26%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,20,28,0.05)_0%,rgba(8,20,28,0.01)_18%,rgba(7,17,24,0.05)_46%,rgba(4,11,16,0.32)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,14,20,0.3)_0%,rgba(5,14,20,0.08)_18%,rgba(5,14,20,0.01)_42%,rgba(5,14,20,0.03)_76%,rgba(5,14,20,0.1)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,20,28,0.22)_0%,rgba(8,20,28,0.18)_18%,rgba(7,17,24,0.16)_46%,rgba(4,11,16,0.32)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,14,20,0.56)_0%,rgba(5,14,20,0.32)_18%,rgba(5,14,20,0.01)_42%,rgba(5,14,20,0.03)_76%,rgba(5,14,20,0.1)_100%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_96%,rgba(2,7,11,0)_0%,rgba(2,7,11,0.04)_44%,rgba(2,7,11,0.34)_88%,rgba(2,7,11,0.52)_100%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_58%_56%,rgba(255,240,202,0.08),transparent_48%)] mix-blend-screen" />
+
+      {!reduceMotion && (
+        <button
+          type="button"
+          className="background-toggle pointer-events-auto absolute right-4 top-20 z-20 sm:right-6 lg:right-10"
+          aria-label={paused ? 'Play background video' : 'Pause background video'}
+          aria-pressed={paused}
+          onClick={() => setPaused((value) => !value)}
+        >
+          {paused ? 'Play background' : 'Pause background'}
+        </button>
+      )}
 
       <div className="absolute -left-12 bottom-[8%] h-[16rem] w-[16rem] rounded-full bg-[#f0ddb5]/9 blur-3xl md:h-[22rem] md:w-[22rem]" />
 
